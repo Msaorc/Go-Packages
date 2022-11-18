@@ -15,3 +15,11 @@ Repository with important go packages
 ### Package bufio:
 * **NewReader**: Command to to create a ReaderBuffer (to read the file in parts it is necessary to create a buffer: make([]byte, x))
 * **Read**: Command to read the file by parts. (reader.Read(buffer))
+
+## HTTP Request
+
+### Package net/http:
+* **Get**: Command to get type requests
+
+### Package io:
+* **ReadAll**: Command for general reading
