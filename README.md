@@ -20,6 +20,16 @@ Repository with important go packages
 
 ### Package net/http:
 * **Get**: Command to get type requests
+* **Handle**: Command to handle routes in general
+* **HandleFunc**: Command to handle routes from a function
+* **NewServeMux**: Command to create create a route handler 
 
 ### Package io:
 * **ReadAll**: Command for general reading
+
+## JSON
+
+### Package encoding/json:
+* **Marshal**: Command to convert a strutc to json
+* **NewEncoder**: Command to convert a strutc to json, showing the result and or giving it to someone.
+* **Unmarshal**: Command to convert json to struct.
