@@ -22,7 +22,7 @@ Repository with important go packages
 * **Get**: Command to get type requests
 * **Handle**: Command to handle routes in general
 * **HandleFunc**: Command to handle routes from a function
-* **NewServeMux**: Command to create create a route handler 
+* **NewServeMux**: Command to create create a route handler
 
 ### Package io:
 * **ReadAll**: Command for general reading

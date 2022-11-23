@@ -5,8 +5,11 @@ import "net/http"
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", HomeHandler)
-	mux.Handle("/site", Site{name: "My Site"})
 	http.ListenAndServe(":9000", mux)
+
+	mux2 := http.NewServeMux()
+	mux2.Handle("/", Site{name: "My Site"})
+	http.ListenAndServe(":9090", mux)
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
