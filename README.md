@@ -32,5 +32,14 @@ Repository with important go packages
 
 ### Package encoding/json:
 * **Marshal**: Command to convert a strutc to json
-* **NewEncoder**: Command to convert a strutc to json, showing the result and or giving it to someone.
-* **Unmarshal**: Command to convert json to struct.
+* **NewEncoder**: Command to convert a strutc to json, showing the result and or giving it to someone
+* **Unmarshal**: Command to convert json to struct
+
+## TEMPLATE
+
+### Package text/templete:
+* **New**: Command to create a new Template
+* **Parse**: Command to parse templates
+* **ParseFiles**: Command to parse multiple templates
+* **Execute**: Command to process the template from a data source
+* **Must**: Command to create and parse templates in a unified way
