@@ -20,6 +20,7 @@ Repository with important go packages
 
 ### Package net/http:
 * **Get**: Command to get type requests
+* **Post**: Command to post type requests
 * **Handle**: Command to handle routes in general
 * **HandleFunc**: Command to handle routes from a function
 * **NewServeMux**: Command to create create a route handler

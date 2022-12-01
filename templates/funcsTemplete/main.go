@@ -1,7 +1,8 @@
 package main
 
 import (
-	"net/http"
+	"os"
+	"strings"
 	"text/template"
 )
 
@@ -18,16 +19,18 @@ func main() {
 		"content.html",
 		"footer.html",
 	}
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		t := template.Must(template.New("content.html").ParseFiles(templates...))
-		err := t.Execute(w, Courses{
-			{"Go", 50},
-			{"Java", 20},
-			{"C#", 10},
-		})
-		if err != nil {
-			panic(err)
-		}
+	// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	t := template.New("content.html")
+	t.Funcs(template.FuncMap{"ToUpper": strings.ToUpper})
+	t = template.Must(t.ParseFiles(templates...))
+	err := t.Execute(os.Stdout, Courses{
+		{"Go", 50},
+		{"Java", 20},
+		{"C#", 10},
 	})
-	http.ListenAndServe(":9090", nil)
+	if err != nil {
+		panic(err)
+	}
+	// })
+	// http.ListenAndServe(":9090", nil)
 }
