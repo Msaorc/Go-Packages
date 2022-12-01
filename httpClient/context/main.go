@@ -1,19 +1,23 @@
 package main
 
 import (
+	"context"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 func main() {
-	clientRequest := http.Client{}
+	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(ctx, time.Second)
 	route := "http://google.com"
-	request, err := http.NewRequest("GET", route, nil)
+	defer cancel()
+	request, err := http.NewRequestWithContext(ctx, "GET", route, nil)
 	if err != nil {
 		panic(err)
 	}
 	request.Header.Set("Accept", "application/json")
-	response, err := clientRequest.Do(request)
+	response, err := http.DefaultClient.Do(request)
 	if err != nil {
 		panic(err)
 	}
@@ -22,6 +26,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
 	println(string(body))
 }

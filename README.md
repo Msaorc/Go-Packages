@@ -25,10 +25,17 @@ Repository with important go packages
 * **HandleFunc**: Command to handle routes from a function
 * **NewServeMux**: Command to create create a route handler
 * **FileServer**: Command to create directory of files
-* **NewRequest**: Commando to create a request customizing.
+* **NewRequest**: Commando to create a request customizing
+* **Do**: Command to execute a modified request
 
 ### Package io:
 * **ReadAll**: Command for general reading
+* **CopyBuffer**: Command to copy a buffer to an output
+
+### Package context:
+* **Backgroud**: Command to create a new context in background
+* **WithTimout**: Command to configure an existing context
+* **cancel**: Command to cancel current context
 
 ## JSON
 
