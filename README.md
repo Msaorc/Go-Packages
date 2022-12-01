@@ -25,6 +25,7 @@ Repository with important go packages
 * **HandleFunc**: Command to handle routes from a function
 * **NewServeMux**: Command to create create a route handler
 * **FileServer**: Command to create directory of files
+* **NewRequest**: Commando to create a request customizing.
 
 ### Package io:
 * **ReadAll**: Command for general reading
