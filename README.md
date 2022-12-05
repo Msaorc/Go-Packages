@@ -27,6 +27,7 @@ Repository with important go packages
 * **FileServer**: Command to create directory of files
 * **NewRequest**: Commando to create a request customizing
 * **Do**: Command to execute a modified request
+* **Error**: Command to show server-side errors
 
 ### Package io:
 * **ReadAll**: Command for general reading
@@ -34,8 +35,9 @@ Repository with important go packages
 
 ### Package context:
 * **Backgroud**: Command to create a new context in background
-* **WithTimout**: Command to configure an existing context
+* **WithTimout**: Command to configure time an existing context
 * **cancel**: Command to cancel current context
+* **Done**: Returns if the context has ended
 
 ## JSON
 
