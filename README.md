@@ -38,6 +38,8 @@ Repository with important go packages
 * **WithTimout**: Command to configure time an existing context
 * **cancel**: Command to cancel current context
 * **Done**: Returns if the context has ended
+* **WithValue**: Command to create a new context with value
+* **Value**: Command to retrieve a value passed in context creation 
 
 ## JSON
 
@@ -54,3 +56,11 @@ Repository with important go packages
 * **ParseFiles**: Command to parse multiple templates
 * **Execute**: Command to process the template from a data source
 * **Must**: Command to create and parse templates in a unified way
+
+## Database
+
+### Package database/sql:
+* **Open**: Connects to the database, note: the corresponding database connection driver must be imported
+* **Prepare**: Prepares the slq instruction to be executed next, command used to prevent sql inject
+* **Close**: Close the connection
+* **Stmt.Exec**: Execute prepared slq statement
