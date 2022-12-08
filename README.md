@@ -64,3 +64,5 @@ Repository with important go packages
 * **Prepare**: Prepares the slq instruction to be executed next, command used to prevent sql inject
 * **Close**: Close the connection
 * **Stmt.Exec**: Execute prepared slq statement
+* **Stmt.Query**: Execute prepared slq statement, with return of a list of data
+* **Stmt.QueryRow**: Execute prepared slq statement, with return one line of data
