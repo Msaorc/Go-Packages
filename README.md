@@ -60,9 +60,22 @@ Repository with important go packages
 ## Database
 
 ### Package database/sql:
-* **Open**: Connects to the database, note: the corresponding database connection driver must be imported
+* **Open**: Connects to the database, note: the corresponding database connection driver must be imported (github.com/go-sql-driver/mysql)
 * **Prepare**: Prepares the slq instruction to be executed next, command used to prevent sql inject
 * **Close**: Close the connection
 * **Stmt.Exec**: Execute prepared slq statement
 * **Stmt.Query**: Execute prepared slq statement, with return of a list of data
 * **Stmt.QueryRow**: Execute prepared slq statement, with return one line of data
+
+### Package gorm.io/gorm:
+* **gorm.Open**: Connects to the database, note: the corresponding database connection driver must be imported (gorm.io/driver/mysql)
+* **AutoMigrate**: Command to create a table from a struct
+* **Create**: Command to insert data to the database
+* **First**: Select the first record
+* **Find**: Search the records
+* **Limit**: Limit return to x records
+* **Offset**: Command to paginate the return of a query
+* **Where**: Add a condition to the search
+* **Save**: Save value changes
+* **Delete**: Delete a record 
+* **Preload**: To load a model related to the search performed
