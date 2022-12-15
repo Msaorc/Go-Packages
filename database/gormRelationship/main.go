@@ -10,6 +10,8 @@ import (
 type Category struct {
 	ID   int `gorm:"primaryKey"`
 	Name string
+	// hasMany
+	Products []Product
 }
 
 type Product struct {
@@ -35,7 +37,8 @@ func main() {
 		panic(err)
 	}
 	// belongsTo(db)
-	hasOne(db)
+	// hasOne(db)
+	hasMany(db)
 }
 
 func belongsTo(db *gorm.DB) {
@@ -73,5 +76,32 @@ func hasOne(db *gorm.DB) {
 	db.Preload("Category").Preload("SerialNumber").Find(&products)
 	for _, product := range products {
 		fmt.Println(product.Name, product.Category.Name, product.SerialNumber.Number)
+	}
+}
+
+func hasMany(db *gorm.DB) {
+	db.AutoMigrate(&Category{}, &Product{}, &SerialNumber{})
+	db.Create(&Category{
+		Name: "Electronic",
+	})
+	db.Create(&Product{
+		Name:       "Notebook",
+		Price:      16000.00,
+		CategoryID: 1,
+	})
+	db.Create(&SerialNumber{
+		Number:    "35264",
+		ProductID: 1,
+	})
+	var categories []Category
+	err := db.Model(&Category{}).Preload("Products.SerialNumber").Find(&categories).Error
+	if err != nil {
+		panic(err)
+	}
+	for _, category := range categories {
+		fmt.Println(category.Name, ":")
+		for _, product := range category.Products {
+			fmt.Println(" - ", product.Name, product.SerialNumber.Number)
+		}
 	}
 }

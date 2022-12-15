@@ -69,7 +69,7 @@ Repository with important go packages
 
 ### Package gorm.io/gorm:
 * **gorm.Open**: Connects to the database, note: the corresponding database connection driver must be imported (gorm.io/driver/mysql)
-* **AutoMigrate**: Command to create a table from a struct
+* **AutoMigrate**: Command to create or update a table from a struct
 * **Create**: Command to insert data to the database
 * **First**: Select the first record
 * **Find**: Search the records
@@ -79,3 +79,4 @@ Repository with important go packages
 * **Save**: Save value changes
 * **Delete**: Delete a record 
 * **Preload**: To load a model related to the search performed
+* **Model**: Returns the data in the structure of the passed model
