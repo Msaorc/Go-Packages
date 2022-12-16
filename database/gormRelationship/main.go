@@ -30,6 +30,20 @@ type SerialNumber struct {
 	ProductID int
 }
 
+type ProductMany struct {
+	ID         int `gorm:"primaryKey"`
+	Name       string
+	Price      float64
+	Categories []CategoryMany `gorm:"many2many:products_categories"`
+	gorm.Model
+}
+
+type CategoryMany struct {
+	ID       int `gorm:"primaryKey"`
+	Name     string
+	Products []ProductMany `gorm:"many2many:products_categories"`
+}
+
 func main() {
 	dsn := "root:root@tcp(localhost:3306)/goexpert?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
@@ -38,7 +52,8 @@ func main() {
 	}
 	// belongsTo(db)
 	// hasOne(db)
-	hasMany(db)
+	// hasMany(db)
+	manyToMany(db)
 }
 
 func belongsTo(db *gorm.DB) {
@@ -102,6 +117,31 @@ func hasMany(db *gorm.DB) {
 		fmt.Println(category.Name, ":")
 		for _, product := range category.Products {
 			fmt.Println(" - ", product.Name, product.SerialNumber.Number)
+		}
+	}
+}
+
+func manyToMany(db *gorm.DB) {
+	db.AutoMigrate(&ProductMany{}, &CategoryMany{})
+	category := CategoryMany{Name: "Electronic"}
+	db.Create(&category)
+	category2 := CategoryMany{Name: "kitchen"}
+	db.Create(&category)
+	db.Create(&ProductMany{
+		Name:       "Panela",
+		Price:      200.00,
+		Categories: []CategoryMany{category, category2},
+	})
+
+	var categories []CategoryMany
+	err := db.Model(&CategoryMany{}).Preload("Products").Find(&categories).Error
+	if err != nil {
+		panic(err)
+	}
+	for _, category := range categories {
+		fmt.Println(category.Name, ":")
+		for _, product := range category.Products {
+			fmt.Println(" - ", product.Name)
 		}
 	}
 }
