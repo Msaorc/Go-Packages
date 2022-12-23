@@ -80,3 +80,8 @@ Repository with important go packages
 * **Delete**: Delete a record 
 * **Preload**: To load a model related to the search performed
 * **Model**: Returns the data in the structure of the passed model
+
+## Workspaces
+
+### go work:
+* **init**: Command that organizes local dependencies of the project, when they are not yet published Ex: (go work init ./folderPackage ./folderPackage1 ...)
